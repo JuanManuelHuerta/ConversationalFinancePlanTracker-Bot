@@ -1,0 +1,15 @@
+
+Intro: setup Flask
+
+export FLASK_APP=hello.py
+flask hello.py 
+flask run
+
+get confForm
+
+convForm 
+https://stackoverflow.com/questions/13772884/css-problems-with-flask-web-app
+
+
+
+
