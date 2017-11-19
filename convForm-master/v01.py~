@@ -6,21 +6,17 @@ app = Flask(__name__)
 app.secret_key = 'some_secret'
 
 
-global_state={'001':0,'002':1}
-user='001'
-state_queries={0:"Hi, Im Marcus., what can I do for you?", 1:"Ok, What's your UserID please?", 2:"Your balance is 200 dollars", 3:"Good, glad to be of help"}
-
 
 @app.route('/')
 def index():
-    if global_state[user] in state_queries:
-        message=state_queries[global_state[user]]
-        global_state[user]+=1
+    x=random.random()
+    if x>=0.5:
+        message="THis is message one"
     else:
-        message="Ok. Lets startover"
-        global_state[user]=0
+        message="This is message two"
     flash(message)
     return render_template('index.html')
+    #return redirect(url_for('index'))
 
 
 @app.route('/login', methods=['GET', 'POST'])

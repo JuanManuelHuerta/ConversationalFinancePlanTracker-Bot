@@ -13,3 +13,7 @@ https://stackoverflow.com/questions/13772884/css-problems-with-flask-web-app
 
 
 
+Design Strategy
+
+   1. Phases Graph: [Global Parameters] [[Global Goal] [Parameters]]
+   2. Context Form
