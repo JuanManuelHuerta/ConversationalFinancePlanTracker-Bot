@@ -13,7 +13,7 @@
 				      {% with options = get_flashed_messages(category_filter=["options"]) %}
 				      {% if options %}
 				      {% with messages = get_flashed_messages(category_filter=["prompt"]) %}
-				      <select name="thought" conv-question="{{ messages[0] }}">
+				      <select name="thought" conv-question="{{ messages }}">
 					{% endwith %}				      
 
 					{%- for msg in options %}
