@@ -11,6 +11,16 @@
                                     <form action=""  method="GET" class="hidden">
 
 
+				      {% with feedback = get_flashed_messages(category_filter=["feedback"]) %}
+				      {% if feedback %}
+					{%- for fdbk in feedback %}
+                                        <input type="text" conv-question="{{ fdbk }}" no-answer="true">
+					{% endfor -%}					
+			   		{% endif %}
+					{% endwith %}				      
+ 
+
+				      {% with options = get_flashed_messages(category_filter=["options"]) %}
 				      {% if options %}
 				         {% with messages = get_flashed_messages(category_filter=["prompt"]) %}
 				         <select name="decision"  method="post"  conv-question="{{ messages[0] }}">

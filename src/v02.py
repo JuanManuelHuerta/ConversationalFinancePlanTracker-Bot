@@ -18,9 +18,9 @@ user='001'
 @app.route('/')
 def state_machine():
     name = request.args.get("name")        
-    if self.expect_decision is True:
-        feedback = request.args.get("feedback")        
-        flash("Got it," + ,"feedback")
+    if cm.expect_decision is True:
+        feedback = request.args.get("decision")        
+        flash("Got it," + feedback,"feedback")
         
 
     if cm.global_state[user] in cm.state_queries:
