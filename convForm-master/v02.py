@@ -15,7 +15,7 @@ cm = state_machine()
 user='001'
 
 @app.route('/')
-def index():
+def state_machine():
     name = request.args.get("name")        
     if cm.global_state[user] in cm.state_queries:
         message=cm.state_queries[cm.global_state[user]]
@@ -24,7 +24,6 @@ def index():
             for x in cm.options[cm.global_state[user]][1]:
                 flash(x,"options")
         if not name is None:
-            #message+= " "+name
             pass
         cm.global_state[user]+=1
     else:
@@ -32,7 +31,6 @@ def index():
         cm.global_state[user]=0
         message+=cm.state_queries[cm.global_state[user]]
         if not name is None:
-            #message+= " "+name
             pass
         cm.global_state[user]+=1
     flash(message,"next_message")
