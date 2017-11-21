@@ -3,37 +3,38 @@ from flask import Flask, flash, redirect, render_template, \
 import random
 
 app = Flask(__name__)
-app.secret_key = 'some_secret'
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
+class state_machine:
+    def __init__(self):
+        self.global_state={'001':0,'002':1}
+        self.state_queries={0:"Hi, Im Marcus., what can I do for you?", 1:"Ok, What's your UserID please?", 2:"Your balance is 200 dollars", 3:"Good, glad to be of help"}
+        self.options={2:["Your balance is 200",["More details","ok"]]}
 
-global_state={'001':0,'002':1}
+cm = state_machine()
 user='001'
-state_queries={0:"Hi, Im Marcus., what can I do for you?", 1:"Ok, What's your UserID please?", 2:"Your balance is 200 dollars", 3:"Good, glad to be of help"}
-options={2:["Your balance is 200",["More details","ok"]]}
 
 @app.route('/')
 def index():
-    name = request.args.get("name")
-        
-    if global_state[user] in state_queries:
-        message=state_queries[global_state[user]]
-        if global_state[user] in options:
-            flash(options[global_state[user]][0],"prompt")
-            for x in options[global_state[user]][1]:
+    name = request.args.get("name")        
+    if cm.global_state[user] in cm.state_queries:
+        message=cm.state_queries[cm.global_state[user]]
+        if cm.global_state[user] in cm.options:
+            flash(cm.options[cm.global_state[user]][0],"prompt")
+            for x in cm.options[cm.global_state[user]][1]:
                 flash(x,"options")
         if not name is None:
             #message+= " "+name
             pass
-        global_state[user]+=1
+        cm.global_state[user]+=1
     else:
         message="Ok. Reached dialog completion. Lets startove."
-        global_state[user]=0
-        message+=state_queries[global_state[user]]
+        cm.global_state[user]=0
+        message+=cm.state_queries[cm.global_state[user]]
         if not name is None:
             #message+= " "+name
             pass
-        global_state[user]+=1
-        
+        cm.global_state[user]+=1
     flash(message,"next_message")
     return render_template('index.html')
 
