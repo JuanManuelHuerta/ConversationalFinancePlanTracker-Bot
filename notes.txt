@@ -13,7 +13,38 @@ https://stackoverflow.com/questions/13772884/css-problems-with-flask-web-app
 
 
 
-Design Strategy
+Dialog Strategoies
 
-   1. Phases Graph: [Global Parameters] [[Global Goal] [Parameters]]
+
+       1. v01: Round Robin  state1 -> state2 -> ...  stateN -> state 1 ...
+          Direct Dialog
+
+
+
+
+       2. v02: Full Mixed Initiative
+
+      Domain Graph: [User Parameters] [[Task] [Task Parameters]   [subtask]]
+
+   analysis: describe, analyze, description, analysis, tell me about
+       subtask:
+             spend 
+             balances
+	     budget
+	     goals
+
+       subtask_parameters:
+           last month
+	   current month
+	
+   forecast: forecast, predict, prediction, outview, preview
+       subtask:
+            goals
+	    balances
+        subtask_parameters:
+	    end of month
+	    next month
+
+
+
    2. Context Form
