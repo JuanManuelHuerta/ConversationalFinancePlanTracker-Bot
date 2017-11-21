@@ -48,3 +48,21 @@ Dialog Strategoies
 
 
    2. Context Form
+
+
+
+==============
+
+
+Backlog
+
+
+1. Informational segments e.g., feedback "You said..."
+2. True internal finite state machine with branching and jumpoing
+3. Hybrid (truly mixed initiative) segments
+4. Visual output
+5. Form class 
+6. Authoring in forms
+7. Connection to engines (predictive engines)
+
+

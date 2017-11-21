@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block body %}
+<body>
+        <section id="demo">
+            <div class="vertical-align">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
+                            <div class="card no-border">
+                                <div id="chat" class="conv-form-wrapper">
+                                    <form action=""  method="GET" class="hidden">
+
+				      {% with options = get_flashed_messages(category_filter=["options"]) %}
+				      {% if options %}
+				         {% with messages = get_flashed_messages(category_filter=["prompt"]) %}
+				         <select name="decision"  method="post"  conv-question="{{ messages[0] }}">
+					 {% endwith %}				      
+
+					{%- for msg in options %}
+					<option value="{{ msg }}">{{ msg }}</option>
+					{% endfor -%}
+
+					{% else %}
+
+				      {% with messages = get_flashed_messages(category_filter=["next_message"]) %}
+				      {% if messages %}
+					{% for message in messages %}
+                                        <input type="text" name="name" conv-question="{{ message }}">
+					{% endfor %}
+				      {% endif %}
+				      {% endwith %}
+
+			   		{% endif %}
+					{% endwith %}				      
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script type="text/javascript" src="/static/stylesheets/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="/static/stylesheets/autosize.min.js"></script>
+        <script type="text/javascript" src="/static/stylesheets/dragscroll.js"></script>
+        <script type="text/javascript" src="/static/stylesheets/jquery.convform.min.js"></script>
+
+
+
+
+</body>
+{% endblock %}
