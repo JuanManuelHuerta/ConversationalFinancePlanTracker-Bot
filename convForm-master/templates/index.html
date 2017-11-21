@@ -12,16 +12,15 @@
 
 				      {% with options = get_flashed_messages(category_filter=["options"]) %}
 				      {% if options %}
-				      {% with messages = get_flashed_messages(category_filter=["prompt"]) %}
-				      <select name="thought" conv-question="{{ messages[0] }}">
-					{% endwith %}				      
+				         {% with messages = get_flashed_messages(category_filter=["prompt"]) %}
+				         <select name="decision"  method="post"  conv-question="{{ messages[0] }}">
+					 {% endwith %}				      
 
 					{%- for msg in options %}
 					<option value="{{ msg }}">{{ msg }}</option>
 					{% endfor -%}
-					{% endif %}
-					{% endwith %}				      
 
+					{% else %}
 				      {% with messages = get_flashed_messages(category_filter=["next_message"]) %}
 				      {% if messages %}
 					{% for message in messages %}
@@ -29,7 +28,8 @@
 					{% endfor %}
 				      {% endif %}
 				      {% endwith %}
-
+			   		{% endif %}
+					{% endwith %}				      
                                     </form>
                                 </div>
                             </div>
