@@ -10,6 +10,7 @@ class state_machine:
         self.global_state={'001':0,'002':1}
         self.state_queries={0:"Hi, Im Marcus., what can I do for you?", 1:"Ok, What's your UserID please?", 2:"Your balance is 200 dollars", 3:"Good, glad to be of help"}
         self.options={2:["Your balance is 200",["More details","ok"]]}
+        self.expect_decision=False
 
 cm = state_machine()
 user='001'
@@ -20,9 +21,12 @@ def state_machine():
     if cm.global_state[user] in cm.state_queries:
         message=cm.state_queries[cm.global_state[user]]
         if cm.global_state[user] in cm.options:
+            cm.expect_decision=True
             flash(cm.options[cm.global_state[user]][0],"prompt")
             for x in cm.options[cm.global_state[user]][1]:
                 flash(x,"options")
+        else:
+            cm.expect_decision=False
         if not name is None:
             pass
         cm.global_state[user]+=1
