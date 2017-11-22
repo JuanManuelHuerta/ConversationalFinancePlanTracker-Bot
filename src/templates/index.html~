@@ -44,17 +44,22 @@ chart.render();
 </script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+				      {% with feedback = get_flashed_messages(category_filter=["feedback"]) %}
+				      {% if feedback %}
+					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+			   		{% endif %}
+					{% endwith %}				      
+
 
 
                                     <form action=""  method="GET" class="hidden">
 
-
 				      {% with feedback = get_flashed_messages(category_filter=["feedback"]) %}
+
 				      {% if feedback %}
 					{%- for fdbk in feedback %}
                                         <input type="text" conv-question="{{ fdbk }}" no-answer="true">
 					{% endfor -%}				
-					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 	
 			   		{% endif %}
 					{% endwith %}				      
