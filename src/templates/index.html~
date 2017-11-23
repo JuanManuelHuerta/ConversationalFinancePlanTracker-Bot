@@ -42,10 +42,10 @@ dataPoints: [
 chart.render();
 }
 </script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 				      {% with feedback = get_flashed_messages(category_filter=["feedback"]) %}
 				      {% if feedback %}
+                                        <script type="text/javascript" src="/static/stylesheets/canvasjs.min.js"></script>
 					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 			   		{% endif %}
 					{% endwith %}				      
