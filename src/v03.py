@@ -50,7 +50,7 @@ def state_machine():
 
         if cm.global_state in cm.state_queries:
 
-            messages=cm.state_queries[cm.global_state]
+            messages=cm.state_queries[cm.global_state][0]
 
             if cm.global_state in cm.options:
                 cm.expect_decision=True
@@ -61,14 +61,16 @@ def state_machine():
                 cm.expect_decision=False
                 if not name is None:
                     pass
-                cm.global_state+=1
+                #cm.global_state+=1
+                cm.global_state=cm.state_queries[cm.global_state][1]
         else:
             messages=["Ok. Reached dialog completion. Lets startover."]
             cm.global_state=0
-            messages+=cm.state_queries[cm.global_state]
+            messages+=cm.state_queries[cm.global_state][0]
             if not name is None:
                 pass
-            cm.global_state+=1
+            #cm.global_state+=1
+            cm.global_state=cm.state_queries[cm.global_state][1]
 
 ### Plug all till the last one to feedback queue and the rest to next_message
     if messages is not None:

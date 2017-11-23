@@ -1,8 +1,9 @@
-{'state_queries': { 0:["Hi, I'm your personal finance assistant.","what can I do for you?"],
-                            1:["Ok, What's your UserID please?"],
-                            2:["Your balance is 200 dollars","lots of money, dude"],
-                            3:["You can see the breakdown of expenses  in the chart above..."],
-                            4:["Cool. Glad to be of help"]},
-'options':{2:["Would you like to hear more details?",{"More details":3,"No thanks":4}]},
+{'state_queries': { 0:[["Hi, I'm your personal finance assistant.","what can I do for you?"],1],
+                            1:[["Ok, What's your UserID please?"],2],
+                            2:[["Your balance is 200 dollars","lots of money, dude"],3],
+                            3:[["You can see the breakdown of expenses  in the chart above..."],4],
+                            4:[["Cool. Glad to be of help"],0],
+			    5:[["Next month you'll be able to save $20.00 and reduce debt by $15.00","Assuming earnings are constant"],0]},
+'options':{2:["Would you like to hear more details?",{"More details":3,"No thanks":4,"Predict NextMonth":5}]},
 'visual_state':set([3])}
 
