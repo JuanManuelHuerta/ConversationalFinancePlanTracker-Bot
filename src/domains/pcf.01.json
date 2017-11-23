@@ -1,0 +1,8 @@
+{'state_queries': { 0:["Hi, I'm your personal finance assistant.","what can I do for you?"],
+                            1:["Ok, What's your UserID please?"],
+                            2:["Your balance is 200 dollars","lots of money, dude"],
+                            3:["You can see the breakdown of expenses  in the chart above..."],
+                            4:["Cool. Glad to be of help"]},
+'options':{2:["Would you like to hear more details?",{"More details":3,"No thanks":4}]},
+'visual_state':set([3])}
+
