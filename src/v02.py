@@ -26,9 +26,12 @@ def state_machine():
     user=cm.user_id
     name = request.args.get("name")
 
+    ### Operations are based in the current state
 
-    if cm.global_state in cm.visual_state:
-            flash("Showing visual","visual")
+    ## Does the current state have a visual component?
+
+
+     ## Does the current state expects a decision to be made?
         
     if cm.expect_decision is True:
         feedback = request.args.get("decision")        
@@ -40,7 +43,10 @@ def state_machine():
                 cm.global_state+=1
         cm.expect_decision=False
         messages=None
-    else:
+
+    if True:
+        if cm.global_state in cm.visual_state:
+            flash("Showing visual","visual")
 
         if cm.global_state in cm.state_queries:
             messages=cm.state_queries[cm.global_state]
@@ -68,8 +74,8 @@ def state_machine():
             for i in range(len(messages)-1):
                 message=messages[i]
                 flash(message,"feedback")
-            message=messages[-1]
-            flash(message,"next_message")
+        message=messages[-1]
+        flash(message,"next_message")
             
     return render_template('index.html')
 
