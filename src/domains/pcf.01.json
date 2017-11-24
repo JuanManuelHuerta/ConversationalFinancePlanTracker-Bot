@@ -5,7 +5,7 @@
                             4:[["Cool.","Glad to be of help"],0],
 			    5:[["Next month you'll be able to save $2000.00 and reduce debt by $1500.00","Assuming earnings are constant","Also, you have your insurance payment coming up","But we already put some money aside for it"],0]},
 'options':{2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}]},
-'Intention_router':{'spanding':2,'breakdown':3,'next month expenses':5,'start over':0},
+'intention_router':{'spending':2,'breakdown':3,'next month expenses':5,'start over':0},
 'visual_state':set([3]),
 'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}}
 

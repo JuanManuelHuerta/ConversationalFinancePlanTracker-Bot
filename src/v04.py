@@ -1,7 +1,7 @@
 from flask import Flask, flash, redirect, render_template, \
      request, url_for
 import random
-
+import language_processing
 
 app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -15,9 +15,24 @@ class state_machine:
         self.state_queries=data['state_queries']
         self.options=data['options']
         self.visual_state=data['visual_state']
+        self.intention_router=data['intention_router']
+        self.domain_form=data['domain_form']
 
 cm = state_machine('001','domains/pcf.01.json')
 #cm = state_machine('001','domains/finn.01.json')
+
+def render_messages(messages):
+    if messages is not None:
+        if len(messages)>1:
+            for i in range(len(messages)-1):
+                message=messages[i]
+                flash(message,"feedback")
+        message=messages[-1]
+        flash(message,"next_message")        
+    return render_template('index.html')
+
+
+
 
 @app.route('/')
 def interaction_rendering():
@@ -26,12 +41,19 @@ def interaction_rendering():
     name = request.args.get("name")
 
     ### Operations are based in the current state
-
     ## Does the current state have a visual component?
+    ## Does the current state expects a decision to be made?
+    ##  Is the customer requesting something?
 
-
-     ## Does the current state expects a decision to be made?
-        
+    if name is not None:
+        utterance=name.lower()
+        match = language_processing.find_match(cm.intention_router,utterance)
+        if match is not None:
+            messages=["Ok. Routing to state "+ str(match)]
+            cm.global_state=match
+           # return render_messages(messages)
+            cm.expect_decision = False
+    
     if cm.expect_decision is True:
         feedback = request.args.get("decision")        
 
@@ -74,14 +96,7 @@ def interaction_rendering():
             cm.global_state=cm.state_queries[cm.global_state][1]
 
 ### Plug all till the last one to feedback queue and the rest to next_message
-    if messages is not None:
-        if len(messages)>1:
-            for i in range(len(messages)-1):
-                message=messages[i]
-                flash(message,"feedback")
-        message=messages[-1]
-        flash(message,"next_message")
-            
-    return render_template('index.html')
+
+    return render_messages(messages)
 
 
