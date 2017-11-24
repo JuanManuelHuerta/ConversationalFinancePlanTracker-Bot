@@ -58,11 +58,23 @@ Backlog
 
 
 1. ***  Informational segments e.g., feedback "You said..."
-2. >> True internal finite state machine with branching and jumpoing
+2.  ** True internal finite state machine with branching and jumpoing
 3. Hybrid (truly mixed initiative) segments
 4.**  Visual output: pie chart
 5. >> Form class 
 6. >> Authoring in forms or at least parametrically
 7. Connection to engines (predictive engines)
+
+New backlog
+1. ***  change to d3   https://bl.ocks.org/kerryrodden/7090426
+2. >> change to dynamical data
+3. >> create a data store backend
+4. domain graph : improve
+5. improve nlp
+
+
+
+
+
 
 

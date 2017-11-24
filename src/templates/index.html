@@ -11,39 +11,6 @@
 
 
 
-<script type="text/javascript">
-window.onload = function () {
-var chart = new CanvasJS.Chart("chartContainer",
-{
-title:{
-text: "Expense Breakdown"
-},
-legend: {
-maxWidth: 350,
-itemWidth: 120
-},
-data: [
-{
-type: "pie",
-showInLegend: true,
-legendText: "{indexLabel}",
-dataPoints: [
-{ y: 4181, indexLabel: "Rent" },
-{ y: 2175, indexLabel: "Transportation" },
-{ y: 3125, indexLabel: "Utilities" },
-{ y: 1176, indexLabel: "Groceries"},
-{ y: 1727, indexLabel: "Eating Out" },
-{ y: 4303, indexLabel: "Other"},
-{ y: 1717, indexLabel: "Debt Service and Paying off"}
-]
-}
-]
-});
-chart.render();
-}
-</script>
-
-
 
 
 
@@ -98,10 +65,39 @@ chart.render();
 
 
 				      {% with feedback = get_flashed_messages(category_filter=["visual"]) %}
+
 				      {% if feedback %}
-                                        <script type="text/javascript" src="/static/stylesheets/canvasjs.min.js"></script>
-					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+
+
+
+
+
+  <div id="main">
+      <div id="sequence"></div>
+      <div id="chart">
+        <div id="explanation" style="visibility: hidden;">
+          <span id="percentage"></span><br/>
+          of visits begin with this sequence of pages
+        </div>
+      </div>
+    </div>
+    <div id="sidebar">
+      <input type="checkbox" id="togglelegend"> Legend<br/>
+      <div id="legend" style="visibility: hidden;"></div>
+    </div>
+    <script type="text/javascript" src="/static/stylesheets/sequences.js"></script>
+    <script type="text/javascript">
+      // Hack to make this example display correctly in an iframe on bl.ocks.org
+      d3.select(self.frameElement).style("height", "700px");
+  </script> 
+  </body>
+
+
+
 			   		{% endif %}
+
+
 					{% endwith %}				      
 
 
