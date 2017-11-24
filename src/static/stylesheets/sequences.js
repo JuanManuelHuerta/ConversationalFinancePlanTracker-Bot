@@ -1,6 +1,6 @@
 // Dimensions of sunburst.
-var width = 750;
-var height = 600;
+var width = 250;
+var height = 250;
 var radius = Math.min(width, height) / 2;
 
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
@@ -40,14 +40,25 @@ var arc = d3.svg.arc()
 
 // Use d3.text and d3.csv.parseRows so that we do not need to have a header
 // row, and can receive the csv as an array of arrays.
-d3.text("/static/stylesheets/visit-sequences.csv", function(text) {
-	var csv = d3.csv.parseRows(text);
-	var json = buildHierarchy(csv);
-	createVisualization(json);
-    });
+//d3.text("/static/stylesheets/visit-sequences.csv", function(text) {
+//	var csv = d3.csv.parseRows(text);
+//	var json = buildHierarchy(csv);
+//	createVisualization(json);
+//    });
+
+var payload = document.currentScript.getAttribute("payload");
+
+
+createVisualization(payload);
+
+
 
 // Main function to draw and set up the visualization, once we have the data.
-function createVisualization(json) {
+function createVisualization(payload) {
+
+
+	var csv = d3.csv.parseRows(payload);
+	var json = buildHierarchy(csv);
 
     // Basic setup of page elements.
     initializeBreadcrumbTrail();

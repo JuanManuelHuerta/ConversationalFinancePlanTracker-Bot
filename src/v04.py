@@ -11,12 +11,13 @@ class state_machine:
         self.user_id=uid
         self.global_state=0
         self.expect_decision=False
-        data = eval(' '.join([x.rstrip() for x in open(domain_file,"rt").readlines()]))
-        self.state_queries=data['state_queries']
-        self.options=data['options']
-        self.visual_state=data['visual_state']
-        self.intention_router=data['intention_router']
-        self.domain_form=data['domain_form']
+        self.data = eval(' '.join([x.rstrip() for x in open(domain_file,"rt").readlines()]))
+        self.visual_data = ''.join([x for x in open("static/stylesheets/visit-sequences.csv","rt").readlines()])
+        self.state_queries=self.data['state_queries']
+        self.options=self.data['options']
+        self.visual_state=self.data['visual_state']
+        self.intention_router=self.data['intention_router']
+        self.domain_form=self.data['domain_form']
 
 cm = state_machine('001','domains/pcf.01.json')
 #cm = state_machine('001','domains/finn.01.json')
@@ -69,7 +70,8 @@ def interaction_rendering():
     if True:
 
         if cm.global_state in cm.visual_state:
-            flash("Showing visual","visual")
+            flash("sunbusrt","visual")
+            flash(cm.visual_data,"visual_data")
 
         if cm.global_state in cm.state_queries:
 
