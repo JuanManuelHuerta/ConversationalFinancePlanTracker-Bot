@@ -20,7 +20,7 @@ cm = state_machine('001','domains/pcf.01.json')
 #cm = state_machine('001','domains/finn.01.json')
 
 @app.route('/')
-def state_machine():
+def interaction_rendering():
 
     user=cm.user_id
     name = request.args.get("name")

@@ -1,0 +1,9 @@
+{'state_queries': { 0:[["Hi, I'm Finn App.","what can I do for you?"],1],
+                            1:[["Ok, What's your name please?"],2],
+                            2:[["Finn is not home","he is in his school"],3],
+                            3:[["you can see how cute he is in the chart above..."],4],
+                            4:[["Cool. Glad to be of help"],0],
+			    5:[["Next month Finn will be ultra cute","Assuming stays cute"],0]},
+'options':{2:["Would you like to hear more details?",{"More details":3,"No thanks":4,"Predict NextMonth":5}]},
+'visual_state':set([3])}
+

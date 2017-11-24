@@ -1,9 +1,11 @@
 {'state_queries': { 0:[["Hi, I'm your personal finance assistant.","what can I do for you?"],1],
-                            1:[["Ok, What's your UserID please?"],2],
-                            2:[["Your balance is 200 dollars","lots of money, dude"],3],
-                            3:[["You can see the breakdown of expenses  in the chart above..."],4],
-                            4:[["Cool. Glad to be of help"],0],
-			    5:[["Next month you'll be able to save $20.00 and reduce debt by $15.00","Assuming earnings are constant"],0]},
-'options':{2:["Would you like to hear more details?",{"More details":3,"No thanks":4,"Predict NextMonth":5}]},
-'visual_state':set([3])}
+                            1:[["Ok.","I can help","What's your UserID please?"],2],
+                            2:[["This is  a summary of your spending...","Last month you spent a total of 12,000 dollars","Your largest expense was rent"],3],
+                            3:[["I am showing you the breakdown of expenses in the chart below."],4],
+                            4:[["Cool.","Glad to be of help"],0],
+			    5:[["Next month you'll be able to save $2000.00 and reduce debt by $1500.00","Assuming earnings are constant","Also, you have your insurance payment coming up","But we already put some money aside for it"],0]},
+'options':{2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}]},
+'Intention_router':{'spanding':2,'breakdown':3,'next month expenses':5,'start over':0},
+'visual_state':set([3]),
+'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}}
 

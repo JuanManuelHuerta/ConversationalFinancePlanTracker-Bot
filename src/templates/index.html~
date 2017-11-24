@@ -16,7 +16,7 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer",
 {
 title:{
-text: "Gaming Consoles Sold in 2012"
+text: "Expenses for the month"
 },
 legend: {
 maxWidth: 350,
@@ -28,13 +28,13 @@ type: "pie",
 showInLegend: true,
 legendText: "{indexLabel}",
 dataPoints: [
-{ y: 4181563, indexLabel: "PlayStation 3" },
-{ y: 2175498, indexLabel: "Wii" },
-{ y: 3125844, indexLabel: "Xbox 360" },
-{ y: 1176121, indexLabel: "Nintendo DS"},
-{ y: 1727161, indexLabel: "PSP" },
-{ y: 4303364, indexLabel: "Nintendo 3DS"},
-{ y: 1717786, indexLabel: "PS Vita"}
+{ y: 4181, indexLabel: "Rent" },
+{ y: 2175, indexLabel: "Transportation" },
+{ y: 3125, indexLabel: "Utilities" },
+{ y: 1176, indexLabel: "Groceries"},
+{ y: 1727, indexLabel: "Eating Out" },
+{ y: 4303, indexLabel: "Other"},
+{ y: 1717, indexLabel: "Debt Service and Paying off"}
 ]
 }
 ]
@@ -43,13 +43,26 @@ chart.render();
 }
 </script>
 
-				      {% with feedback = get_flashed_messages(category_filter=["visual"]) %}
+
+
+
+
+
+
+                                    <form action=""  method="GET" class="hidden">
+
+
+
+
+
+				      {% with feedback = get_flashed_messages(category_filter=["feedback"]) %}
 				      {% if feedback %}
-                                        <script type="text/javascript" src="/static/stylesheets/canvasjs.min.js"></script>
-					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+					{%- for fdbk in feedback %}
+                                        <input type="text" conv-question="{{ fdbk }}" no-answer="true">
+					{% endfor -%}				
+	
 			   		{% endif %}
 					{% endwith %}				      
-
 
 
 
@@ -60,21 +73,6 @@ chart.render();
 					{% endfor %}
 				      {% endif %}
 				      {% endwith %}
-
-
-
-                                    <form action=""  method="GET" class="hidden">
-
-				      {% with feedback = get_flashed_messages(category_filter=["feedback"]) %}
-
-				      {% if feedback %}
-					{%- for fdbk in feedback %}
-                                        <input type="text" conv-question="{{ fdbk }}" no-answer="true">
-					{% endfor -%}				
-	
-			   		{% endif %}
-					{% endwith %}				      
-
 
  
 
@@ -92,7 +90,23 @@ chart.render();
 					
 					{% endwith %}				      
                                     </form>
+
+
+
+
                                 </div>
+
+
+				      {% with feedback = get_flashed_messages(category_filter=["visual"]) %}
+				      {% if feedback %}
+                                        <script type="text/javascript" src="/static/stylesheets/canvasjs.min.js"></script>
+					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+			   		{% endif %}
+					{% endwith %}				      
+
+
+
+
                             </div>
                         </div>
                     </div>
