@@ -8,14 +8,28 @@ var b = {
     w: 75, h: 30, s: 3, t: 10
 };
 
+
 // Mapping of step names to colors.
 var colors = {
-    "home": "#5687d1",
-    "product": "#7b615c",
-    "search": "#de783b",
-    "account": "#6ab975",
-    "other": "#a173d1",
-    "end": "#bbbbbb"
+    "transportation": "#5687d1",
+    "uber": "#7b615c",
+    "parking": "#44615c",
+    "MetroCard": "#de783b",
+    "Auto": "#6ab975",
+    "Lease": "#11b975",
+    "insurance": "#a173d1",
+    "Repairs": "#bbbbbb",
+    "Housing": "#5687d1",
+    "Groceries": "#7b615c",
+    "FreshDirect": "#de783b",
+    "Supermarket": "#6ab975",
+    "Cosco": "#a173d1",
+    "Financial": "#bbbbbb",
+    "Fees": "#a173d1",
+    "Penalties": "#bbbbbb",
+    "Transfers": "#5687d1",
+    "ATMWithdrawals": "#5687d1"
+
 };
 
 // Total size of all segments; we set this later, after loading the data.
@@ -58,7 +72,7 @@ function createVisualization(payload) {
 
 
 	var csv = d3.csv.parseRows(payload);
-	var json = buildHierarchy(text);
+	var json = buildHierarchy(csv);
 
     // Basic setup of page elements.
     initializeBreadcrumbTrail();
