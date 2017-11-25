@@ -25,7 +25,7 @@ def load_user(uid,month):
     new_results2=[]
     for result in new_results:
         a=result.split(",")
-        new_results2.append(a[0]+","+str(counter[a[0].split("-")[-1]]))
+        new_results2.append(a[0]+"-end"+","+str(counter[a[0].split("-")[-1]]))
         
     return new_results2
 

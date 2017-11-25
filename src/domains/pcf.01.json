@@ -7,5 +7,6 @@
 'options':{2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}]},
 'intention_router':{'spending':2,'breakdown':3,'next month expenses':5,'start over':0},
 'visual_state':set([3]),
+'forecast_state':set([5]),
 'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}}
 

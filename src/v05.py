@@ -19,6 +19,7 @@ class state_machine:
         self.state_queries=self.data['state_queries']
         self.options=self.data['options']
         self.visual_state=self.data['visual_state']
+        self.forecast_state=self.data['forecast_state']
         self.intention_router=self.data['intention_router']
         self.domain_form=self.data['domain_form']
 
@@ -75,6 +76,15 @@ def interaction_rendering():
         if cm.global_state in cm.visual_state:
             flash("sunbusrt","visual")
             flash(cm.visual_data,"visual_data")
+
+
+        if cm.global_state in cm.forecast_state:
+            flash("forecast","visual")
+            flash(cm.visual_data,"forecast_data")
+
+
+
+
 
         if cm.global_state in cm.state_queries:
 

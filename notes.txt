@@ -68,10 +68,12 @@ Backlog
 New backlog
 1. ***  change to d3   https://bl.ocks.org/kerryrodden/7090426
 2. *** change to dynamical data
-3. >> create a data store backend/engine
+3. *** create a data store backend/engine
 4. domain graph : improve
 5. improve nlp
-
+6. Drill down of categories
+7. Forecast engine 
+8. **  Forecast chart with d3  https://bl.ocks.org/mbostock/3884955
 
 
 
