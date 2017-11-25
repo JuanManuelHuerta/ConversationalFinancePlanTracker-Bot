@@ -74,6 +74,9 @@ New backlog
 6. Drill down of categories
 7. Forecast engine 
 8. **  Forecast chart with d3  https://bl.ocks.org/mbostock/3884955
+     http://bl.ocks.org/jmuyskens/41692f215c3a43e330dd5fcdc92b597b
+     http://bl.ocks.org/mbostock/3943967
+
 
 
 

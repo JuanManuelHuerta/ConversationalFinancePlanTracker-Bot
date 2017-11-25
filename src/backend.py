@@ -30,12 +30,25 @@ def load_user(uid,month):
     return new_results2
 
 
-def main():
-    print load_user('a','b')
+def forecast_user(uid,month):
+    results=["date\tassets\tliabilities\tnetworth"]
+    date=20170101
+    assets=3000
+    liabilities=200
+    for i in range(60):
+        results.append(str(date)+"\t"+str(assets)+"\t"+str(liabilities)+"\t"+str(assets-liabilities))
+        assets+=random.randint(-100,200)
+        liabilities+=random.randint(-100,200)
+    return results
 
+
+
+def main():
+    #print load_user('a','b')
+    print forecast_user('a','b')
 
 
 if __name__== "__main__":
     main()
-
+    
 

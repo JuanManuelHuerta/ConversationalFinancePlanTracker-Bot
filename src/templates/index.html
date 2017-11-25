@@ -91,91 +91,150 @@
 				      {% if visualdata %}
 
 
-<svg width="960" height="500"></svg>
-<script src="//d3js.org/d3.v4.min.js"></script>
+<div>
+
+
+<svg width="400" height="300"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
+var n = 3, // The number of series.
+    m = 30; // The number of values per series.
+
+// The xz array has m elements, representing the x-values shared by all series.
+// The yz array has n elements, representing the y-values of each of the n series.
+// Each yz[i] is an array of m non-negative numbers representing a y-value for xz[i].
+// The y01z array has the same structure as yz, but with stacked [y₀, y₁] instead of y.
+var xz = d3.range(m),
+    yz = d3.range(n).map(function() { return bumps(m); }),
+    y01z = d3.stack().keys(d3.range(n))(d3.transpose(yz)),
+    yMax = d3.max(yz, function(y) { return d3.max(y); }),
+    y1Max = d3.max(y01z, function(y) { return d3.max(y, function(d) { return d[1]; }); });
+
 var svg = d3.select("svg"),
-    margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = svg.attr("width") - margin.left - margin.right,
-    height = svg.attr("height") - margin.top - margin.bottom,
+    margin = {top: 40, right: 10, bottom: 20, left: 10},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var parseTime = d3.timeParse("%Y%m%d");
+var x = d3.scaleBand()
+    .domain(xz)
+    .rangeRound([0, width])
+    .padding(0.08);
 
-var x = d3.scaleTime().range([0, width]),
-    y = d3.scaleLinear().range([height, 0]),
-    z = d3.scaleOrdinal(d3.schemeCategory10);
+var y = d3.scaleLinear()
+    .domain([0, y1Max])
+    .range([height, 0]);
 
-var line = d3.line()
-    .curve(d3.curveBasis)
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.temperature); });
+var color = d3.scaleOrdinal()
+    .domain(d3.range(n))
+    .range(d3.schemeCategory20c);
 
-d3.tsv("/static/stylesheets/data.tsv", type, function(error, data) {
-  if (error) throw error;
+var series = g.selectAll(".series")
+  .data(y01z)
+  .enter().append("g")
+    .attr("fill", function(d, i) { return color(i); });
 
-  var cities = data.columns.slice(1).map(function(id) {
-    return {
-      id: id,
-      values: data.map(function(d) {
-        return {date: d.date, temperature: d[id]};
-      })
-    };
-  });
+var rect = series.selectAll("rect")
+  .data(function(d) { return d; })
+  .enter().append("rect")
+    .attr("x", function(d, i) { return x(i); })
+    .attr("y", height)
+    .attr("width", x.bandwidth())
+    .attr("height", 0);
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+rect.transition()
+    .delay(function(d, i) { return i * 10; })
+    .attr("y", function(d) { return y(d[1]); })
+    .attr("height", function(d) { return y(d[0]) - y(d[1]); });
 
-  y.domain([
-    d3.min(cities, function(c) { return d3.min(c.values, function(d) { return d.temperature; }); }),
-    d3.max(cities, function(c) { return d3.max(c.values, function(d) { return d.temperature; }); })
-  ]);
+g.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x)
+        .tickSize(0)
+        .tickPadding(6));
 
-  z.domain(cities.map(function(c) { return c.id; }));
+d3.selectAll("input")
+    .on("change", changed);
 
-  g.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+var timeout = d3.timeout(function() {
+  d3.select("input[value=\"grouped\"]")
+      .property("checked", true)
+      .dispatch("change");
+}, 2000);
 
-  g.append("g")
-      .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y))
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("fill", "#000")
-      .text("Temperature, ºF");
+function changed() {
+  timeout.stop();
+  if (this.value === "grouped") transitionGrouped();
+  else transitionStacked();
+}
 
-  var city = g.selectAll(".city")
-    .data(cities)
-    .enter().append("g")
-      .attr("class", "city");
+function transitionGrouped() {
+  y.domain([0, yMax]);
 
-  city.append("path")
-      .attr("class", "line")
-      .attr("d", function(d) { return line(d.values); })
-      .style("stroke", function(d) { return z(d.id); });
+  rect.transition()
+      .duration(500)
+      .delay(function(d, i) { return i * 10; })
+      .attr("x", function(d, i) { return x(i) + x.bandwidth() / n * this.parentNode.__data__.key; })
+      .attr("width", x.bandwidth() / n)
+    .transition()
+      .attr("y", function(d) { return y(d[1] - d[0]); })
+      .attr("height", function(d) { return y(0) - y(d[1] - d[0]); });
+}
 
-  city.append("text")
-      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
-      .attr("x", 3)
-      .attr("dy", "0.35em")
-      .style("font", "10px sans-serif")
-      .text(function(d) { return d.id; });
-});
+function transitionStacked() {
+  y.domain([0, y1Max]);
 
-function type(d, _, columns) {
-  d.date = parseTime(d.date);
-  for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
-  return d;
+  rect.transition()
+      .duration(500)
+      .delay(function(d, i) { return i * 10; })
+      .attr("y", function(d) { return y(d[1]); })
+      .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+    .transition()
+      .attr("x", function(d, i) { return x(i); })
+      .attr("width", x.bandwidth());
+}
+
+// Returns an array of m psuedorandom, smoothly-varying non-negative numbers.
+// Inspired by Lee Byron’s test data generator.
+// http://leebyron.com/streamgraph/
+function bumps(m) {
+  var values = [], i, j, w, x, y, z;
+
+  // Initialize with uniform random values in [0.1, 0.2).
+  for (i = 0; i < m; ++i) {
+    values[i] = 0.1 + 0.1 * Math.random();
+  }
+
+  // Add five random bumps.
+  for (j = 0; j < 5; ++j) {
+    x = 1 / (0.1 + Math.random());
+    y = 2 * Math.random() - 0.5;
+    z = 10 / (0.1 + Math.random());
+    for (i = 0; i < m; i++) {
+      w = (i / m - y) * z;
+      values[i] += x * Math.exp(-w * w);
+    }
+  }
+
+  // Ensure all values are positive.
+  for (i = 0; i < m; ++i) {
+    values[i] = Math.max(0, values[i]);
+  }
+
+  return values;
 }
 
 </script>
 
+</div>
 
+
+<form>
+  <label><input type="radio" name="mode" value="grouped"> Grouped</label>
+  <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+</form>
 
 
 

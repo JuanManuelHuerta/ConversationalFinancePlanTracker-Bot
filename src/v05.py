@@ -16,6 +16,7 @@ class state_machine:
         self.data = eval(' '.join([x.rstrip() for x in open(domain_file,"rt").readlines()]))
         #self.visual_data = ''.join([x for x in open("static/stylesheets/visit-sequences.csv","rt").readlines()])
         self.visual_data ='\n'.join([x for x in  backend.load_user(uid,'2017-06')])
+        self.forecast_data ='\n'.join([x for x in  backend.forecast_user(uid,'2017-06')])
         self.state_queries=self.data['state_queries']
         self.options=self.data['options']
         self.visual_state=self.data['visual_state']
@@ -80,7 +81,7 @@ def interaction_rendering():
 
         if cm.global_state in cm.forecast_state:
             flash("forecast","visual")
-            flash(cm.visual_data,"forecast_data")
+            flash(cm.forecast_data,"forecast_data")
 
 
 
