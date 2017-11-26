@@ -3,9 +3,10 @@
                             2:[["This is  a summary of your spending...","Last month you spent a total of 12,000 dollars","Your largest expense was rent"],3],
                             3:[["I am showing you the breakdown of expenses in the chart below."],4],
                             4:[["Cool.","Glad to be of help"],0],
-			    5:[["Next month you'll be able to save $2000.00 and reduce debt by $1500.00","Assuming earnings are constant","Also, you have your insurance payment coming up","But we already put some money aside for it"],0]},
+			    5:[["Next month you'll be able to save $2000.00 and reduce debt by $1500.00","Assuming earnings are constant","Also, you have your insurance payment coming up","But we already put some money aside for it"],0],
+			    6:[["You should consolidate your debts using a personal loan","You are carrying $12,000 of debt at 23.99% APR","A personal loan with your FICO could save you at least 3 or 4% points in APR","Call for more info"],0]},
 'options':{2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}]},
-'intention_router':{'spending':2,'breakdown':3,'next month expenses':5,'start over':0},
+'intention_router':{'spending':2,'breakdown':3,'next month expenses':5,'start over':0, 'forecast':5, 'predict':5, 'prediction':5, 'forecasting':5, 'my expenses':3, 'explain':3, 'borrow':6, 'get a loan':6, 'consolidate':6, 'debt management':6},
 'visual_state':set([3]),
 'forecast_state':set([5]),
 'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}}
