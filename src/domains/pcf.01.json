@@ -8,14 +8,23 @@
 			    7:[["I can help you set and track your goals","let's create a goal","Enter your goal name and amount","for ex: 250 dollars for my cousin's birthday"],8],
 			    8:[["Ok, now enter the period you need to save", "e.g., 3 months"],9],
 			    9:[["Awesome, now enter a label for your goal","e,.g., cousin b-day"],10],
-			    10:[["Your goal has been recorded"],11]
+			    10:[["Your goal has been recorded"],0]
 
 
 },
 
-'options':{2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}]},
-'intention_router':{'spending':2,'breakdown':3,'understand':3, 'better understanding':3, 'next month':5, 'next month expenses':5,'start over':0, 'forecast':5, 'predict':5, 'prediction':5, 'forecasting':5, 'my expenses':3, 'explain':3, 'borrow':6, 'get a loan':6, 'consolidate':6, 'debt management':6, 'borrowing':6, 'need':6, 'loan':6, 'track':7, 'goals':7, 'plan':7, 'plans':7},
+'options' : { 
+               2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}],
+               6:["What would you like to do next?",{"Apply for a loan now":0,"Please call me":0,"Help me manage my expenses":7}]
+
+
+ 	       },
+
+'intention_router':{'spending':2,'breakdown':3,'understand':3, 'better understanding':3, 'next month':5, 'next month expenses':5,'start over':0, 'startover':0, 'reset':0, 'restart':0, 'forecast':5, 'predict':5, 'prediction':5, 'forecasting':5, 'my expenses':3, 'explain':3, 'borrow':6, 'get a loan':6, 'consolidate':6, 'debt management':6, 'borrowing':6, 'need to borrow':6, 'borrow':6, 'loan':6, 'track':7, 'goals':7, 'plan':7, 'plans':7},
+
 'visual_state':set([3]),
+
 'forecast_state':set([5]),
+
 'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}}
 
