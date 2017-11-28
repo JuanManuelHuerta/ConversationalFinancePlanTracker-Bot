@@ -72,14 +72,18 @@ New backlog
 4. >> domain graph : improve
 5. >> improve nlp
 6. >> Drill down of categories
-7. >> Forecast engine 
+7. >> Forecast engine : LSTM 
 8. **  Forecast chart with d3  https://bl.ocks.org/mbostock/3884955
      http://bl.ocks.org/jmuyskens/41692f215c3a43e330dd5fcdc92b597b
      http://bl.ocks.org/mbostock/3943967
      Fix for custom data.
 9. Persistence of data
-10.  Better NLP
+10.  Better NLP: build a hierarchical 
 11. Prioritization of info like userid
+
+
+Bug backlog:
+1. WHen options deactivate input window; tighten the user interaction
 
 
 

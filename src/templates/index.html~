@@ -93,10 +93,6 @@
 
 <div>
 
-<form>
-  <label><input type="radio" name="mode" value="grouped"> Grouped</label>
-  <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
-</form>
 
 <svg width="400" height="300"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -233,6 +229,12 @@ function bumps(m) {
 </script>
 
 </div>
+
+
+<form>
+  <label><input type="radio" name="mode" value="grouped"> Grouped</label>
+  <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+</form>
 
 
 
