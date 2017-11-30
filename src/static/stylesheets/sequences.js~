@@ -14,21 +14,21 @@ var colors = {
     "transportation": "#5687d1",
     "uber": "#7b615c",
     "parking": "#44615c",
-    "MetroCard": "#de783b",
-    "Auto": "#6ab975",
-    "Lease": "#11b975",
+    "metrocard": "#de783b",
+    "auto": "#6ab975",
+    "lease": "#11b975",
     "insurance": "#a173d1",
-    "Repairs": "#bbbbbb",
-    "Housing": "#5687d1",
-    "Groceries": "#7b615c",
-    "FreshDirect": "#de783b",
-    "Supermarket": "#6ab975",
-    "Cosco": "#a173d1",
-    "Financial": "#bbbbbb",
-    "Fees": "#a173d1",
-    "Penalties": "#bbbbbb",
-    "Transfers": "#5687d1",
-    "ATMWithdrawals": "#5687d1"
+    "repairs": "#bbbbbb",
+    "housing": "#5687d1",
+    "groceries": "#7b615c",
+    "freshdirect": "#de783b",
+    "supermarket": "#6ab975",
+    "cosco": "#a173d1",
+    "financial": "#bbbbbb",
+    "fees": "#a173d1",
+    "penalties": "#bbbbbb",
+    "transfers": "#5687d1",
+    "atmwithdrawals": "#5687d1"
 
 };
 
@@ -182,7 +182,7 @@ function initializeBreadcrumbTrail() {
     // Add the label at the end, for the percentage.
     trail.append("svg:text")
 	.attr("id", "endlabel")
-	.style("fill", "#000");
+	.style("fill", "#FFF");
 }
 
 // Generate a string that describes the points of a breadcrumb polygon.

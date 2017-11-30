@@ -1,21 +1,21 @@
-{'state_queries': { 0:[["Hi, I'm your personal finance assistant.","what can I do for you?"],1],
-                            1:[["Ok.","I can help","What's your UserID please?"],2],
-                            2:[["This is  a summary of your spending...","Last month you spent a total of 12,000 dollars","Your largest expense was rent"],3],
-                            3:[["I am showing you the breakdown of expenses in the chart below."],4],
-                            4:[["Cool.","Glad to be of help"],0],
-			    5:[["Next month you'll be able to save $2000.00 and reduce debt by $1500.00","Assuming earnings are constant","Also, you have your insurance payment coming up","But we already put some money aside for it"],0],
-			    6:[["You could consolidate your debts using a personal loan","You are carrying $12,000 of debt at 23.99% APR","A personal loan with your FICO could save you at least 3 or 4% points in APR","That could save you thousands of dollars","Call for more info"],0],
+{'state_queries': { 0:[["hi! I'm your personal finance assistant","I can help you track and manage expenses, financial goals, etc","what do you want to do?"],1],
+                            1:[["ok","I can help","what's your user id?"],2],
+                            2:[["here's  a summary of your spending...","last month you spent $12.2k","your largest category was housing"],3],
+                            3:[["you can see the breakdown of expenses in the chart below"],4],
+                            4:[["great!","glad to be of help", ":-)"],0],
+			    5:[["next month you can save $2k and reduce debt by $1.5k","(I assume earnings will be constant)","also...","heads up: you have your insurance payment coming up","we already put some money aside for it"],0],
+			    6:[["You could consolidate your debts using a personal loan","you have $12k of cc debt at 23.99% APR","A personal loan with your FICO could save you at least 3 or 4% points in APR","that could save you thousands of dollars","call for more info"],0],
 			    7:[["I can help you set and track your goals","let's create a goal","Enter your goal name and amount","for ex: 250 dollars for my cousin's birthday"],8],
 			    8:[["Ok, now enter the period you need to save", "e.g., 3 months"],9],
-			    9:[["Awesome, now enter a label for your goal","e,.g., cousin b-day"],10],
-			    10:[["Your goal has been recorded"],0]
+			    9:[["Your goal has been recorded"],0]
 
 
 },
 
 'options' : { 
-               2:["Would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}],
-               6:["What would you like to do next?",{"Apply for a loan now":0,"Please call me":0,"Help me manage my expenses":7}]
+               2:["would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}],
+	       5:["would you like to learn more?",{"tell me how to save money...":0, "no thanks":0}],
+               6:["what would you like to do next?",{"Apply for a loan now":0,"Please call me":0,"Help me manage my expenses":7}]
 
 
  	       },
