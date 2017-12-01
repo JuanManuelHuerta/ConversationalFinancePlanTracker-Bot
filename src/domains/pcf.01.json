@@ -1,6 +1,6 @@
 {'state_queries': { 0:[["hi! I'm your personal finance assistant","I can help you track and manage expenses, financial goals, etc","what do you want to do?"],1],
                             1:[["ok","I can help","what's your user id?"],2],
-                            2:[["here's  a summary of your spending...","last month you spent $12.2k","your largest category was housing"],3],
+                            2:[["here's  a summary of your spending...","last month you spent $12.2k","your largest category was housing",backend.summary(uid)],3],
                             3:[["you can see the breakdown of expenses in the chart below"],4],
                             4:[["great!","glad to be of help", ":-)"],0],
 			    5:[["next month you can save $2k and reduce debt by $1.5k","(I assume earnings will be constant)","also...","heads up: you have your insurance payment coming up","we already put some money aside for it"],0],

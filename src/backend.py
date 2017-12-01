@@ -19,6 +19,11 @@ def traversal_backend(pref,a_tree):
             for x in  traversal_backend(pref+"-"+key,a_tree[key]):
                 yield x
 
+
+def summary(uid):
+    results=load_user(uid,'123')
+    return "for user "+uid
+
 def load_user_generate(uid,month):
     results=traversal(category_tree)
     new_results=[result.lower()+","+str(random.randint(100,200)) for result in results]

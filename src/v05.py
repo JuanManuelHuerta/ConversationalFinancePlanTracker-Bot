@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 class state_machine:
-    def __init__(self,domain_file):
+    def __init__(self,uid,domain_file):
         self.global_state=0
         self.expect_decision=False
         self.data = eval(' '.join([x.rstrip() for x in open(domain_file,"rt").readlines()]))
@@ -27,7 +27,7 @@ class state_machine:
         self.visual_data ='\n'.join([x for x in  backend.load_user(uid,'2017-06')])
         self.forecast_data ='\n'.join([x for x in  backend.forecast_user(uid,'2017-06')])
 
-cm = state_machine('domains/pcf.01.json')
+cm = state_machine('juan123','domains/pcf.01.json')
 cm.load_user('juan123')
 
 #cm = state_machine('001','domains/finn.01.json')
@@ -49,6 +49,7 @@ def render_messages(messages):
 def interaction_rendering():
 
     user=cm.user_id
+    uid=user
     name = request.args.get("name")
 
     ### Operations are based in the current state
@@ -94,7 +95,13 @@ def interaction_rendering():
 
         if cm.global_state in cm.state_queries:
 
-            messages=cm.state_queries[cm.global_state][0]
+            messages=[]
+            for individual_message in cm.state_queries[cm.global_state][0]:
+                if isinstance(individual_message,(str)):
+                    messages.append(individual_message)
+                else:
+                    messages.append(eval(individual_message))
+
 
             if cm.global_state in cm.options:
                 cm.expect_decision=True

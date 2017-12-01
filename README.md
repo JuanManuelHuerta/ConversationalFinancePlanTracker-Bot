@@ -28,6 +28,11 @@ Tight small domain parsing.
 
 Forecast engine to help track goals.
 
+## Natural Language Generation
+
+For backend summaries
+
+
 ## Backend
 
 Persists user information, provides access to transactional events. Persists goals.
