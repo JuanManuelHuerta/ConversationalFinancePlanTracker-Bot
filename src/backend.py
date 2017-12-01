@@ -10,8 +10,16 @@ def traversal(a_tree):
             for y in traversal(a_tree[x]):            
                 yield x+"-"+y
         
+def traversal_backend(pref,a_tree):
+    print "Called with pref", pref
+    for key in a_tree:
+        if isinstance(a_tree[key],(int, long, float)):
+            yield pref+"-"+key+"-end,"+str(a_tree[key])
+        if isinstance(a_tree[key],(dict)):
+            for x in  traversal_backend(pref+"-"+key,a_tree[key]):
+                yield x
 
-def load_user(uid,month):
+def load_user_generate(uid,month):
     results=traversal(category_tree)
     new_results=[result.lower()+","+str(random.randint(100,200)) for result in results]
     counter={}
@@ -26,8 +34,14 @@ def load_user(uid,month):
     for result in new_results:
         a=result.split(",")
         new_results2.append(a[0]+"-end"+","+str(counter[a[0].split("-")[-1]]))
-        
+      
     return new_results2
+
+
+def load_user(uid,month):
+    data_store=eval(open("domains/backend_data.json","rt").read().lower())
+    new_results=[x for x in traversal_backend("Expenses",data_store[uid])]
+    return new_results
 
 
 def forecast_user(uid,month):

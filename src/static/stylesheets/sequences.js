@@ -9,8 +9,11 @@ var b = {
 };
 
 
+
+
 // Mapping of step names to colors.
 var colors = {
+    "expenses":"#168731",
     "transportation": "#5687d1",
     "uber": "#7b615c",
     "parking": "#44615c",
@@ -29,6 +32,7 @@ var colors = {
     "penalties": "#bbbbbb",
     "transfers": "#5687d1",
     "atmwithdrawals": "#5687d1",
+    "venmo": "#0617f1",
     "end": "#ffffff"
 
 };
