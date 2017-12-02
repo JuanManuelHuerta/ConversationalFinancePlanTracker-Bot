@@ -14,7 +14,6 @@
 
 'options' : { 
                2:["would you like to hear more details?",{"Expense Breakdown":3,"No thanks":4,"Tell me about NextMonth":5}],
-	       5:["would you like to learn more?",{"tell me how to save money...":0, "no thanks":0}],
                6:["what would you like to do next?",{"Apply for a loan now":0,"Please call me":0,"Help me manage my expenses":7}]
 
 

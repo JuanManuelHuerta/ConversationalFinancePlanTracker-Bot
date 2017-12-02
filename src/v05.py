@@ -15,6 +15,8 @@ class state_machine:
         self.data = eval(' '.join([x.rstrip() for x in open(domain_file,"rt").readlines()]))
         self.state_queries=self.data['state_queries']
         self.options=self.data['options']
+        self.forecast_data ='\n'.join([x for x in  backend.forecast_user(uid,'2017-06')])
+        print self.forecast_data
         self.visual_state=self.data['visual_state']
         self.forecast_state=self.data['forecast_state']
         self.intention_router=self.data['intention_router']
@@ -25,7 +27,6 @@ class state_machine:
         #self.visual_data = ''.join([x for x in open("static/stylesheets/visit-sequences.csv","rt").readlines()])
         self.user_id='juan123'
         self.visual_data ='\n'.join([x for x in  backend.load_user(uid,'2017-06')])
-        self.forecast_data ='\n'.join([x for x in  backend.forecast_user(uid,'2017-06')])
 
 cm = state_machine('juan123','domains/pcf.01.json')
 cm.load_user('juan123')
