@@ -84,6 +84,7 @@ New backlog
 
 Bug backlog:
 1. WHen options deactivate input window; tighten the user interaction
+2. THe options after the time series creates trouble
 
 
 
