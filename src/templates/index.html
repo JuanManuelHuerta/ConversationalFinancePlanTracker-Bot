@@ -48,14 +48,12 @@
 				         {% with messages = get_flashed_messages(category_filter=["prompt"]) %}
 				         <select name="decision"  method="post"  conv-question="{{ messages[0] }}">
 					 {% endwith %}				      
-
 					{%- for msg in options %}
 					<option value="{{ msg }}">{{ msg }}</option>
 					{% endfor -%}
-
-			   		{% endif %}
-					
-					{% endwith %}				      
+					</select>
+			   	      {% endif %}
+				      {% endwith %}				      
 
 
 
@@ -67,10 +65,23 @@
 
 
                                 </div>
+
+  </body>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
 				      {% with feedback = get_flashed_messages(category_filter=["visual"]) %}
 				      {% if feedback %}
 				      {% with visualdata = get_flashed_messages(category_filter=["visual_data"]) %}
 				      {% if visualdata %}
+   <div>
   <div id="main">
       <div id="sequence"></div>
       <div id="chart">
@@ -87,8 +98,8 @@
     <script type="text/javascript" src="/static/stylesheets/sequences.js"  payload="{{ visualdata[0] }}"></script>
     <script type="text/javascript">
       d3.select(self.frameElement).style("height", "250px");
-  </script> 
-  </body>
+    </script> 
+    </div>
 			   		{% endif %}                                       
                                       {% endwith %}
 
@@ -253,10 +264,6 @@ function bumps(m) {
 
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <script type="text/javascript" src="/static/stylesheets/jquery-1.12.3.min.js"></script>
         <script type="text/javascript" src="/static/stylesheets/autosize.min.js"></script>
@@ -266,5 +273,4 @@ function bumps(m) {
 
 
 
-</body>
 {% endblock %}

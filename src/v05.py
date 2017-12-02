@@ -62,7 +62,7 @@ def interaction_rendering():
         utterance=name.lower()
         match = language_processing.find_match(cm.intention_router,utterance)
         if match is not None:
-            messages=["Ok. Routing to state "+ str(match)]
+            messages=["ok routing "+ str(match)]
             cm.global_state=match
            # return render_messages(messages)
             cm.expect_decision = False
@@ -71,7 +71,7 @@ def interaction_rendering():
         feedback = request.args.get("decision")        
 
         if not feedback is None:
-            flash("Got it," + feedback,"feedback")
+            flash("got it  " + feedback,"feedback")
             if feedback in cm.options[cm.global_state][1]:
                 cm.global_state=cm.options[cm.global_state][1][feedback]
             else:
