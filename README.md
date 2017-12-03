@@ -37,6 +37,9 @@ For backend summaries
 
 Persists user information, provides access to transactional events. Persists goals.
 
+Persistnce is carried out using a MongoDb database.
+
+
 
 ## Domain Specification Object
 

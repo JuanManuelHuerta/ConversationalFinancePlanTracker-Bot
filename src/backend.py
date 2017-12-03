@@ -1,5 +1,8 @@
 import sys
 import random
+from pymongo import MongoClient
+
+
 
 category_tree = { "transportation":{"uber":{}, "parking":{}, "MetroCard":{}, "Auto":{"Lease":{}, "Insurance":{}, "Repairs":{}}}, "Housing":{"Rent":{}}, "Groceries":{"FreshDirect":{}, "Supermarket":{}, "Cosco":{}}, "Financial":{"Fees":{}, "Penalties":{}, "Transfers":{}, "ATMWithdrawals":{}}}
 
@@ -44,8 +47,9 @@ def load_user_generate(uid,month):
 
 
 def load_user(uid,month):
-    data_store=eval(open("domains/backend_data.json","rt").read().lower())
-    new_results=[x for x in traversal_backend("Expenses",data_store[uid])]
+#    data_store=eval(open("domains/backend_data.json","rt").read().lower())
+#    new_results=[x for x in traversal_backend("Expenses",data_store[uid])]
+    new_results=[x for x in traversal_backend("Expenses",retrieve_from_mongo(open_db(),uid)['expenses'])]
     return new_results
 
 
@@ -59,6 +63,20 @@ def forecast_user(uid,month):
         assets+=random.randint(-100,200)
         liabilities+=random.randint(-100,200)
     return results
+
+
+
+def retrieve_from_mongo(posts,user_id):
+   found_users = posts.find_one({'user_id': user_id})
+   return found_users
+
+
+def open_db():
+    client = MongoClient()
+    db = client.cfptbot
+    posts = db.posts
+    return posts
+
 
 
 

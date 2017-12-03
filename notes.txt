@@ -77,7 +77,7 @@ New backlog
      http://bl.ocks.org/jmuyskens/41692f215c3a43e330dd5fcdc92b597b
      http://bl.ocks.org/mbostock/3943967
      Fix for custom data.
-9. Persistence of data
+9.   >>>>   Persistence of data: MongoDB
 10.  Better NLP: build a hierarchical 
 11. Prioritization of info like userid
 
@@ -87,6 +87,9 @@ Bug backlog:
 2. THe options after the time series creates trouble
 
 
+Notes:
+
+[1] Simple MongoDB tutorial https://realpython.com/blog/python/introduction-to-mongodb-and-python/
 
 
 
