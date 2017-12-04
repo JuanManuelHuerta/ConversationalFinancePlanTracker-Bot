@@ -1,6 +1,6 @@
 {'state_queries': { 0:[["greetings, I am your financial assistant","what do you want to do?"],1],
                             1:[["ok","I can help","what's your user id?"],2],
-                            2:[["here's  a summary of your spending...","last month you spent $12.2k","your largest category was housing",backend.summary(uid)],3],
+                            2:[["here's  a summary of your spending...","last month you spent $12.2k","your largest category was housing",{'function':'summary'}],3],
                             3:[["you can see the breakdown of expenses in the chart below"],4],
                             4:[["in the last 3 months, your rent has taken the largest chunk of your payckeck","your spending habits are quite stable"],0],
 			    5:[["next month you can save $2k and reduce debt by $1.5k","assumming your earnings stays the same","also, heads up: you have your insurance payment coming up","we already put some money aside for it"],0],
@@ -27,5 +27,9 @@
 
 'forecast_state':set([5]),
 
-'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}}
+'domain_form':{'name':None, 'current_task':None, 'current_subtask':None, 'parameter':None}
+
+
+}
+
 

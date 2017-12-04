@@ -10,6 +10,7 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 class state_machine:
     def __init__(self,uid,domain_file):
+        self.user_id=uid
         self.global_state=0
         self.expect_decision=False
         self.forecast_data ='\n'.join([x for x in  backend.forecast_user(uid,'2017-06')])
@@ -26,9 +27,11 @@ class state_machine:
 
     def load_user(self,uid):
         #self.visual_data = ''.join([x for x in open("static/stylesheets/visit-sequences.csv","rt").readlines()])
-        self.user_id='juan123'
+        self.user_id=uid
         self.visual_data ='\n'.join([x for x in  backend.load_user(uid,'2017-06')])
 
+    def dynamic_message(self,func):
+        return getattr(backend,func)(self.user_id)
 
 
 
@@ -47,6 +50,8 @@ def render_messages(messages):
         message=messages[-1]
         flash(message,"next_message")        
     return render_template('index.html')
+
+
 
 
 
@@ -106,7 +111,7 @@ def interaction_rendering():
                 if isinstance(individual_message,(str)):
                     messages.append(individual_message)
                 else:
-                    messages.append(eval(individual_message))
+                    messages.append(cm.dynamic_message(individual_message['function']))
 
 
             if cm.global_state in cm.options:

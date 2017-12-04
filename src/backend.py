@@ -24,7 +24,8 @@ def traversal_backend(pref,a_tree):
 
 
 def summary(uid):
-    results=load_user(uid,'123')
+    print "IM in summary", uid
+    #results=load_user(uid,'123')
     return "for user "+uid
 
 def load_user_generate(uid,month):

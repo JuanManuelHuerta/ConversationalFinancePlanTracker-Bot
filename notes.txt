@@ -85,11 +85,17 @@ New backlog
 Bug backlog:
 1. WHen options deactivate input window; tighten the user interaction
 2. THe options after the time series creates trouble
+3. Functions get called an loading of the domain structure, when the userid is not known.
+
 
 
 Notes:
 
 [1] Simple MongoDB tutorial https://realpython.com/blog/python/introduction-to-mongodb-and-python/
+
+
+Callable functions in dicts:
+https://softwareengineering.stackexchange.com/questions/182093/why-store-a-function-inside-a-python-dictionary
 
 
 
